@@ -1,0 +1,36 @@
+body {
+    max-width: 500px;
+    margin:auto;
+    text-align: center;
+}
+
+form {
+    margin: 10px;
+}
+
+div.hamming-matrix {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+div.hamming-cell {
+    width: 100px;
+    height: 100px;
+    float: left;
+    outline: 1px solid;
+    font-size: 48px;
+    line-height: 100px;
+}
+
+div.hamming-message{
+    background-color: #ecffe3;
+}
+
+div.hamming-question {
+    background-color: #e1f776;
+}
+
+div.hamming-0 {
+    background-color: #cacaca;
+}

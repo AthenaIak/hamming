@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+<h1>Encoding puzzles</h1>
+
+    <form action="/encoding/" method="POST">
+        <input type="number" name="grid_size" id="grid_size" value="4">
+        <input class="generate-button" type="submit" value="Generate grid">
+    </form>
+
+    <div id="setup-info">{{setup_info}}</div>
+
+    {% if cells|length %}
+    <div class="hamming-matrix">
+        {% for cell in cells %}
+        <div class="hamming-cell hamming-{{ cell.type }}" id="{{ cell.id }}">{{ cell.value }}</div>
+        {% endfor %}
+    </div>
+
+    <form action="/encoding/" method="POST">
+        <input hidden type="text" name="message" id="message">
+        <input class="validate-button" type="submit" value="Validate">
+    </form>
+
+    <div id="validation-info">{{validation_info}}</div>
+    {% endif %}
+{% endblock %}

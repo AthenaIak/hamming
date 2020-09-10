@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hamming</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+    grid_size = 4;
+
+    // decimal to binary (filled with leading 0s)
+    function dec2bin(dec){
+        return (dec >>> 0).toString(2).padStart(grid_size, "0");
+    }
+
+    $(document).ready(function(){
+        // rotate states in hamming cells (?, 0, 1)
+        $(".hamming-cell").click(function(){
+            switch ($(this).text()) {
+                case "?":
+                    $(this).text("0");
+                    break;
+                case "0":
+                    $(this).text("1");
+                    break;
+                case "1":
+                default:
+                    $(this).text("?");
+            }
+        })
+
+        // fill the textbox with the solution found in the hamming grid
+        $(".validate-button").click(function(){
+            message = ""
+            for(i = 0; i < grid_size ** 2; i++){
+                message += $("#" + dec2bin(i)).text();
+            }
+            $("#message").val(message);
+        })
+    });
+    </script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+{% block body %}{% endblock %}
+</body>
+</html>
